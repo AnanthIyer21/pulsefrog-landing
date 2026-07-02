@@ -261,7 +261,7 @@
   var emailInput = document.getElementById("email");
   var submitBtn = form.querySelector("button[type=submit]");
   var status = document.getElementById("waitlist-status");
-  var FALLBACK = "hello@pulsefrog.org";
+  var FALLBACK = "ananth@sffstudio.com";
 
   function setStatus(html, kind) {
     status.innerHTML = html;
