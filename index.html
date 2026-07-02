@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PulseFrog — radio that knows you. Your news, your interests, your city — written and read for you by an AI host, live every time you press play.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0C0F0D" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
+  <title>PulseFrog — radio that knows you</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C0F0D'/%3E%3Cg fill='%237ED957'%3E%3Crect x='6' y='13' width='3' height='6' rx='1.5'/%3E%3Crect x='11' y='9' width='3' height='14' rx='1.5'/%3E%3Crect x='16' y='6' width='3' height='20' rx='1.5'/%3E%3Crect x='21' y='11' width='3' height='10' rx='1.5'/%3E%3Crect x='26' y='14' width='3' height='4' rx='1.5'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="masthead">
+    <span class="wordmark">PulseFrog</span>
+    <span class="onair" aria-label="Status: private beta"><span class="onair-dot" aria-hidden="true"></span>ON AIR — PRIVATE BETA</span>
+  </header>
+
+  <!-- 1 · Hero -->
+  <section class="hero">
+    <div class="measure">
+      <p class="eyebrow">Personal radio · generated live</p>
+      <h1>Radio that knows&nbsp;you.</h1>
+      <p class="sub">Your news, your interests, your city — written and read for you by an AI&nbsp;host, live every time you press&nbsp;play.</p>
+    </div>
+    <div class="horizon" aria-hidden="false">
+      <canvas id="hero-pulse" class="pulse-canvas" width="1400" height="150"
+              role="img" aria-label="PulseFrog waveform: green bars breathing gently"></canvas>
+    </div>
+  </section>
+
+  <main>
+    <!-- 2 · Hear it -->
+    <section class="demo" aria-labelledby="demo-heading">
+      <div class="measure">
+        <p class="eyebrow">Recorded this morning, by the machine itself</p>
+        <h2 id="demo-heading">Hear it.</h2>
+        <p class="section-lede">Sixty seconds of Pulse reading a real bulletin — today’s news, written and voiced by the actual pipeline, untouched.</p>
+      </div>
+
+      <div class="tuner" id="player">
+        <div class="tuner-head">
+          <span class="tuner-label">PULSEFROG · CH + UK · EN</span>
+          <span class="player-time" id="player-time">0:00</span>
+        </div>
+        <div class="tuner-body">
+          <button id="play-btn" class="play-btn" type="button" aria-label="Play demo" disabled>
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+          </button>
+          <div class="player-wave">
+            <canvas id="player-pulse" class="pulse-canvas pulse-canvas--player" width="640" height="88"
+                    role="img" aria-label="Audio playback waveform"></canvas>
+            <div class="player-progress" id="player-progress" role="progressbar"
+                 aria-label="Playback progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="player-progress-fill" id="player-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+        <p class="demo-missing" id="demo-missing" hidden>Demo coming very&nbsp;soon.</p>
+      </div>
+
+      <!-- demo.mp3 sits next to this file; swap it any time, no code change needed -->
+      <audio id="demo-audio" src="demo.mp3" preload="metadata"></audio>
+    </section>
+
+    <!-- 3 · Benefits -->
+    <section class="benefits" aria-label="Why PulseFrog">
+      <div class="benefit">
+        <p class="eyebrow">Yours</p>
+        <h3>It’s yours</h3>
+        <p>Your interests and your two countries in every session.</p>
+      </div>
+      <div class="benefit">
+        <p class="eyebrow">Now</p>
+        <h3>It’s now</h3>
+        <p>Written from the freshest reports, minutes old.</p>
+      </div>
+      <div class="benefit">
+        <p class="eyebrow">Honest</p>
+        <h3>It’s honest</h3>
+        <p>Cross-checked across many named sources, always attributed.</p>
+      </div>
+    </section>
+
+    <!-- 4 · Waitlist -->
+    <section class="waitlist" aria-labelledby="waitlist-heading">
+      <div class="measure">
+        <p class="eyebrow">Now in private beta</p>
+        <h2 id="waitlist-heading">Be there when it switches&nbsp;on.</h2>
+        <form id="waitlist-form" action="https://formspree.io/f/xpqgoryb" method="POST" novalidate>
+          <label class="visually-hidden" for="email">Email address</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
+                 placeholder="you@example.com" required aria-describedby="waitlist-status">
+          <button type="submit">Get early access</button>
+        </form>
+        <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5 · Footer -->
+  <footer>
+    <span>© PULSEFROG 2026</span>
+    <span>BUILT IN SWITZERLAND</span>
+    <a href="mailto:hello@pulsefrog.org">CONTACT</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
