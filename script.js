@@ -216,6 +216,45 @@
     timeEl.textContent = fmtTime(audio.currentTime);
   });
 
+  /* ---------- preference chips (§5a G5): pick interest + place ---------- */
+
+  var LABELS = {
+    tech: "TECH & AI", business: "BUSINESS", sports: "SPORTS", science: "SCIENCE",
+    ch: "SWITZERLAND", uk: "UK", world: "WORLD"
+  };
+  var tunerLabel = document.getElementById("tuner-label");
+  var picked = { interest: null, place: null };
+
+  function markSelected() {
+    document.querySelectorAll(".chip").forEach(function (chip) {
+      var group = chip.dataset.interest ? "interest" : "place";
+      var key = chip.dataset.interest || chip.dataset.place;
+      var effective = picked[group] || (group === "interest" ? "tech" : "world");
+      chip.classList.toggle("selected", key === effective);
+    });
+  }
+
+  function retune() {
+    var interest = picked.interest || "tech";
+    var place = picked.place || "world";
+    audio.pause();
+    audio.src = "clips/" + interest + "-" + place + ".mp3";
+    tunerLabel.textContent = "PULSEFROG · " + LABELS[interest] + " · " + LABELS[place];
+    progressFill.style.width = "0%";
+    progress.setAttribute("aria-valuenow", "0");
+    markSelected();
+    // the pick IS the play gesture — start immediately
+    audio.play().catch(function () { /* autoplay policy: play button still works */ });
+  }
+
+  document.querySelectorAll(".chip").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      if (chip.dataset.interest) picked.interest = chip.dataset.interest;
+      if (chip.dataset.place) picked.place = chip.dataset.place;
+      retune();
+    });
+  });
+
   /* ---------- waitlist (§5.1 · 4) ---------- */
 
   var form = document.getElementById("waitlist-form");

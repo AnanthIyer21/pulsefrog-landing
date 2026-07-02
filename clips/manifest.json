@@ -1,0 +1,104 @@
+{
+ "generated_at": "2026-07-02T22:04:07.834964+00:00",
+ "clips": {
+  "tech-ch": {
+   "file": "clips/tech-ch.mp3",
+   "stories": [
+    "German reforms, Google's final defeat, and a $20M Swift wedding?",
+    "European Court dismisses appeal of Yanukovych ally over Swiss assets freeze"
+   ],
+   "words": 53
+  },
+  "tech-uk": {
+   "file": "clips/tech-uk.mp3",
+   "stories": [
+    "German reforms, Google's final defeat, and a $20M Swift wedding?",
+    "Woman who faked cancer and defrauded charity jailed"
+   ],
+   "words": 48
+  },
+  "tech-world": {
+   "file": "clips/tech-world.mp3",
+   "stories": [
+    "German reforms, Google's final defeat, and a $20M Swift wedding?",
+    "DR Congo Ebola outbreak tops 400 deaths as virus reaches major city"
+   ],
+   "words": 52
+  },
+  "business-ch": {
+   "file": "clips/business-ch.mp3",
+   "stories": [
+    "German reforms, Google's final defeat, and a $20M Swift wedding?",
+    "European Court dismisses appeal of Yanukovych ally over Swiss assets freeze"
+   ],
+   "words": 49
+  },
+  "business-uk": {
+   "file": "clips/business-uk.mp3",
+   "stories": [
+    "German reforms, Google's final defeat, and a $20M Swift wedding?",
+    "Woman who faked cancer and defrauded charity jailed"
+   ],
+   "words": 46
+  },
+  "business-world": {
+   "file": "clips/business-world.mp3",
+   "stories": [
+    "German reforms, Google's final defeat, and a $20M Swift wedding?",
+    "DR Congo Ebola outbreak tops 400 deaths as virus reaches major city"
+   ],
+   "words": 63
+  },
+  "sports-ch": {
+   "file": "clips/sports-ch.mp3",
+   "stories": [
+    "World Cup 2026: Spain cruise into last 16 with win over Austria",
+    "European Court dismisses appeal of Yanukovych ally over Swiss assets freeze"
+   ],
+   "words": 53
+  },
+  "sports-uk": {
+   "file": "clips/sports-uk.mp3",
+   "stories": [
+    "World Cup 2026: Spain cruise into last 16 with win over Austria",
+    "Woman who faked cancer and defrauded charity jailed"
+   ],
+   "words": 56
+  },
+  "sports-world": {
+   "file": "clips/sports-world.mp3",
+   "stories": [
+    "World Cup 2026: Spain cruise into last 16 with win over Austria",
+    "DR Congo Ebola outbreak tops 400 deaths as virus reaches major city"
+   ],
+   "words": 60
+  },
+  "science-ch": {
+   "file": "clips/science-ch.mp3",
+   "stories": [
+    "DR Congo Ebola outbreak tops 400 deaths as virus reaches major city",
+    "European Court dismisses appeal of Yanukovych ally over Swiss assets freeze"
+   ],
+   "words": 73
+  },
+  "science-uk": {
+   "file": "clips/science-uk.mp3",
+   "stories": [
+    "DR Congo Ebola outbreak tops 400 deaths as virus reaches major city",
+    "Woman who faked cancer and defrauded charity jailed"
+   ],
+   "words": 64
+  },
+  "science-world": {
+   "file": "clips/science-world.mp3",
+   "stories": [
+    "DR Congo Ebola outbreak tops 400 deaths as virus reaches major city",
+    "German reforms, Google's final defeat, and a $20M Swift wedding?"
+   ],
+   "words": 64
+  }
+ },
+ "hero": {
+  "words": 61
+ }
+}

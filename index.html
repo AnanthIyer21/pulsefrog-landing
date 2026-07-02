@@ -35,14 +35,27 @@
     <!-- 2 · Hear it -->
     <section class="demo" aria-labelledby="demo-heading">
       <div class="measure">
-        <p class="eyebrow">Recorded this morning, by the machine itself</p>
-        <h2 id="demo-heading">Hear it.</h2>
-        <p class="section-lede">Sixty seconds of Pulse reading a real bulletin — today’s news, written and voiced by the actual pipeline, untouched.</p>
+        <p class="eyebrow">Generated earlier today, by the machine itself</p>
+        <h2 id="demo-heading">Hear yours.</h2>
+        <p class="section-lede">Pick what you care about and where you are — thirty seconds of Pulse on exactly that, from today’s news, written and voiced by the real pipeline, untouched.</p>
+        <div class="chip-rows">
+          <div class="chip-row" role="group" aria-label="Pick an interest">
+            <button class="chip" data-interest="tech" type="button">Tech &amp; AI</button>
+            <button class="chip" data-interest="business" type="button">Business &amp; markets</button>
+            <button class="chip" data-interest="sports" type="button">Sports</button>
+            <button class="chip" data-interest="science" type="button">Science &amp; health</button>
+          </div>
+          <div class="chip-row" role="group" aria-label="Pick a place">
+            <button class="chip" data-place="ch" type="button">Switzerland</button>
+            <button class="chip" data-place="uk" type="button">UK</button>
+            <button class="chip" data-place="world" type="button">World</button>
+          </div>
+        </div>
       </div>
 
       <div class="tuner" id="player">
         <div class="tuner-head">
-          <span class="tuner-label">PULSEFROG · CH + UK · EN</span>
+          <span class="tuner-label" id="tuner-label">PULSEFROG · TODAY’S TASTE · EN</span>
           <span class="player-time" id="player-time">0:00</span>
         </div>
         <div class="tuner-body">
@@ -90,6 +103,7 @@
       <div class="measure">
         <p class="eyebrow">Now in private beta</p>
         <h2 id="waitlist-heading">Be there when it switches&nbsp;on.</h2>
+        <p class="price"><strong>CHF 9.90</strong> <span class="price-per">/ month</span> <span class="price-note">planned launch price, news tier · ≈ €9.99 / $9.99 · music &amp; more to follow</span></p>
         <form id="waitlist-form" action="https://formspree.io/f/xpqgoryb" method="POST" novalidate>
           <label class="visually-hidden" for="email">Email address</label>
           <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
