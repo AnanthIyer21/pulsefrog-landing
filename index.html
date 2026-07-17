@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="signin-btn" href="https://app.dev.pulsefrog.org" target="_blank" rel="noopener">Sign in</a>
 
   <header class="masthead">
     <span class="wordmark">PulseFrog</span>
@@ -32,19 +33,51 @@
   </section>
 
   <main>
-    <!-- 2 · Hear it — straight into the live app (founder 2026-07-17: the
-         embedded sample player is gone; "Hear yours." IS the link). -->
+    <!-- 2 · Hear it -->
     <section class="demo" aria-labelledby="demo-heading">
       <div class="measure">
-        <p class="eyebrow">The live app · private beta</p>
-        <h2 id="demo-heading">
-          <a class="hear-link" href="https://app.dev.pulsefrog.org" target="_blank" rel="noopener">
-            Hear yours.
-            <svg class="demo-link-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12M13 6l6 6-6 6"/></svg>
-          </a>
-        </h2>
-        <p class="section-lede">Sign in, pick what you care about, press play. Your station writes and voices itself from today’s news.</p>
+        <p class="eyebrow">Generated earlier today, by the machine itself</p>
+        <h2 id="demo-heading">Hear yours.</h2>
+        <p class="section-lede">Pick what you care about and where you are — thirty seconds of Pulse on exactly that, from today’s news, written and voiced by the real pipeline, untouched.</p>
+        <div class="chip-rows">
+          <div class="chip-row" role="group" aria-label="Pick an interest">
+            <button class="chip" data-interest="tech" type="button">Tech &amp; AI</button>
+            <button class="chip" data-interest="business" type="button">Business &amp; markets</button>
+            <button class="chip" data-interest="sports" type="button">Sports</button>
+            <button class="chip" data-interest="science" type="button">Science &amp; health</button>
+          </div>
+          <div class="chip-row" role="group" aria-label="Pick a place">
+            <button class="chip" data-place="ch" type="button">Switzerland</button>
+            <button class="chip" data-place="uk" type="button">UK</button>
+            <button class="chip" data-place="world" type="button">World</button>
+          </div>
+        </div>
       </div>
+
+      <div class="tuner" id="player">
+        <div class="tuner-head">
+          <span class="tuner-label" id="tuner-label">PULSEFROG · TODAY’S TASTE · EN</span>
+          <span class="player-time" id="player-time">0:00</span>
+        </div>
+        <div class="tuner-body">
+          <button id="play-btn" class="play-btn" type="button" aria-label="Play demo" disabled>
+            <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>
+          </button>
+          <div class="player-wave">
+            <canvas id="player-pulse" class="pulse-canvas pulse-canvas--player" width="640" height="88"
+                    role="img" aria-label="Audio playback waveform"></canvas>
+            <div class="player-progress" id="player-progress" role="progressbar"
+                 aria-label="Playback progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="player-progress-fill" id="player-progress-fill"></div>
+            </div>
+          </div>
+        </div>
+        <p class="demo-missing" id="demo-missing" hidden>Demo coming very&nbsp;soon.</p>
+      </div>
+
+      <!-- demo.mp3 sits next to this file; swap it any time, no code change needed -->
+      <audio id="demo-audio" src="demo.mp3" preload="metadata"></audio>
     </section>
 
     <!-- 3 · Benefits -->
