@@ -128,131 +128,15 @@
   };
 
   var heroWave = new PulseWave(document.getElementById("hero-pulse"), { density: 16 });
-  var playerWave = new PulseWave(document.getElementById("player-pulse"), { density: 11 });
 
-  // keep waves honest if the user flips reduced-motion or color scheme live
+  // keep the wave honest if the user flips reduced-motion or color scheme live
   reducedMotion.addEventListener && reducedMotion.addEventListener("change", function () {
-    [heroWave, playerWave].forEach(function (wv) {
-      wv.stop();
-      wv.start();
-    });
+    heroWave.stop();
+    heroWave.start();
   });
   var scheme = window.matchMedia("(prefers-color-scheme: light)");
   scheme.addEventListener && scheme.addEventListener("change", function () {
     heroWave.draw();
-    playerWave.draw();
-  });
-
-  /* ---------- demo player (§5.1 · 2) ---------- */
-
-  var audio = document.getElementById("demo-audio");
-  var player = document.getElementById("player");
-  var playBtn = document.getElementById("play-btn");
-  var progress = document.getElementById("player-progress");
-  var progressFill = document.getElementById("player-progress-fill");
-  var timeEl = document.getElementById("player-time");
-  var missingEl = document.getElementById("demo-missing");
-  var demoAvailable = false;
-
-  function fmtTime(s) {
-    if (!isFinite(s)) return "0:00";
-    var m = Math.floor(s / 60), sec = Math.floor(s % 60);
-    return m + ":" + (sec < 10 ? "0" : "") + sec;
-  }
-
-  function demoMissing() {
-    demoAvailable = false;
-    playBtn.disabled = true;
-    player.classList.add("unavailable");
-    missingEl.hidden = false;
-    playerWave.setMode("idle");
-  }
-
-  audio.addEventListener("loadedmetadata", function () {
-    demoAvailable = true;
-    playBtn.disabled = false;
-    player.classList.remove("unavailable");
-    missingEl.hidden = true;
-    timeEl.textContent = fmtTime(audio.duration);
-  });
-  audio.addEventListener("error", demoMissing);
-  // deterministic probe for the "file added later" case: a 404 means not there
-  // yet (media elements can chew on HTML 404 bodies without ever erroring).
-  // Don't declare missing on a mere slow load — background tabs defer media.
-  fetch("demo.mp3", { method: "HEAD" }).then(function (res) {
-    if (!res.ok) demoMissing();
-  }).catch(function () { /* offline or file:// — the error event covers it */ });
-
-  playBtn.addEventListener("click", function () {
-    if (!demoAvailable) return;
-    if (audio.paused) {
-      audio.play().catch(function () { /* stay paused (e.g. autoplay policy) */ });
-    } else {
-      audio.pause();
-    }
-  });
-
-  audio.addEventListener("play", function () {
-    player.classList.add("playing");
-    playBtn.setAttribute("aria-label", "Pause demo");
-    playerWave.setMode("playing");
-  });
-  audio.addEventListener("pause", function () {
-    player.classList.remove("playing");
-    playBtn.setAttribute("aria-label", "Play demo");
-    playerWave.setMode(audio.ended ? "idle" : "paused");
-  });
-  audio.addEventListener("ended", function () {
-    playerWave.setMode("idle");
-    progressFill.style.width = "0%";
-    progress.setAttribute("aria-valuenow", "0");
-    timeEl.textContent = fmtTime(audio.duration);
-  });
-  audio.addEventListener("timeupdate", function () {
-    if (!isFinite(audio.duration) || audio.duration === 0) return;
-    var pct = (audio.currentTime / audio.duration) * 100;
-    progressFill.style.width = pct + "%";
-    progress.setAttribute("aria-valuenow", String(Math.round(pct)));
-    timeEl.textContent = fmtTime(audio.currentTime);
-  });
-
-  /* ---------- preference chips (§5a G5): pick interest + place ---------- */
-
-  var LABELS = {
-    tech: "TECH & AI", business: "BUSINESS", sports: "SPORTS", science: "SCIENCE",
-    ch: "SWITZERLAND", uk: "UK", world: "WORLD"
-  };
-  var tunerLabel = document.getElementById("tuner-label");
-  var picked = { interest: null, place: null };
-
-  function markSelected() {
-    document.querySelectorAll(".chip").forEach(function (chip) {
-      var group = chip.dataset.interest ? "interest" : "place";
-      var key = chip.dataset.interest || chip.dataset.place;
-      var effective = picked[group] || (group === "interest" ? "tech" : "world");
-      chip.classList.toggle("selected", key === effective);
-    });
-  }
-
-  function retune() {
-    var interest = picked.interest || "tech";
-    var place = picked.place || "world";
-    audio.pause();
-    audio.src = "clips/" + interest + "-" + place + ".mp3";
-    tunerLabel.textContent = "PULSEFROG · " + LABELS[interest] + " · " + LABELS[place];
-    progressFill.style.width = "0%";
-    progress.setAttribute("aria-valuenow", "0");
-    markSelected();
-    // the pick IS the play gesture — start immediately
-    audio.play().catch(function () { /* autoplay policy: play button still works */ });
-  }
-
-  document.querySelectorAll(".chip").forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      if (chip.dataset.interest) picked.interest = chip.dataset.interest;
-      if (chip.dataset.place) picked.place = chip.dataset.place;
-      retune();
-    });
   });
 
   /* ---------- waitlist (§5.1 · 4) ---------- */

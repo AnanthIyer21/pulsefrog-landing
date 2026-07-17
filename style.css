@@ -240,6 +240,44 @@ h2 { font-size: clamp(2rem, 4.5vw, 3rem); }
   color: var(--text-lo);
 }
 
+/* ── demo CTA: into the real app ──────────────────────────── */
+
+.demo-cta { margin-top: 2rem; }
+
+.demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--surface0);
+  background: var(--pulse);
+  border-radius: 999px;
+  padding: 0.8rem 1.8rem;
+  text-decoration: none;
+  transition: transform 120ms ease-out, opacity 120ms ease-out;
+}
+.demo-link:hover { transform: translateY(-1px); }
+.demo-link:hover .demo-link-arrow { transform: translateX(2px); }
+.demo-link:focus-visible { outline: 2px solid var(--pulse); outline-offset: 3px; }
+
+.demo-link-arrow {
+  width: 1.05rem; height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 120ms ease-out;
+}
+
+.demo-cta-note {
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+  color: var(--text-mid);
+}
+
 /* ── benefits: a ruled band, not cards ───────────────────── */
 
 .benefits {
@@ -389,3 +427,18 @@ footer a:hover { color: var(--text-hi); }
   text-transform: uppercase;
   color: var(--text-lo);
 }
+
+/* "Hear yours." IS the link now (2026-07-17) — heading-scale, pulse-green,
+   arrow nudges on hover; the old embedded player styles above are unused. */
+.hear-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--pulse);
+  text-decoration: none;
+  transition: opacity 120ms ease-out;
+}
+.hear-link:hover { opacity: 0.85; }
+.hear-link:hover .demo-link-arrow { transform: translateX(4px); }
+.hear-link:focus-visible { outline: 2px solid var(--pulse); outline-offset: 4px; border-radius: 4px; }
+.hear-link .demo-link-arrow { width: 0.8em; height: 0.8em; stroke-width: 2.6; }
