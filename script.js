@@ -156,7 +156,7 @@
     var href = "mailto:" + FALLBACK +
       "?subject=" + encodeURIComponent("PulseFrog early access") +
       "&body=" + encodeURIComponent("Please add me to the waitlist: " + email);
-    return 'The waitlist isn’t wired up yet — email us instead: <a href="' + href + '">' + FALLBACK + "</a>";
+    return 'The waitlist isn’t wired up yet. Email us instead: <a href="' + href + '">' + FALLBACK + "</a>";
   }
 
   function validEmail(v) {
