@@ -235,6 +235,16 @@
       : "x-safari-https://" + bare;
   }
 
+  /* Founder 2026-07-17: don't wait for a tap — try to hand the page to the
+     system browser the moment it loads. WebViews that honor the scheme jump
+     straight to Safari/Chrome; ones that swallow it fall through to the
+     banner below (which is why the banner still renders first). */
+  setTimeout(function () {
+    try {
+      window.location.replace(breakout(window.location.href));
+    } catch (e) { /* banner remains the way out */ }
+  }, 80);
+
   var banner = document.createElement("div");
   banner.className = "iab-banner";
   banner.innerHTML =
