@@ -442,3 +442,33 @@ footer a:hover { color: var(--text-hi); }
 .hear-link:hover .demo-link-arrow { transform: translateX(4px); }
 .hear-link:focus-visible { outline: 2px solid var(--pulse); outline-offset: 4px; border-radius: 4px; }
 .hear-link .demo-link-arrow { width: 0.8em; height: 0.8em; stroke-width: 2.6; }
+
+/* in-app browser breakout banner (2026-07-17) */
+.iab-banner {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 20px 16px;
+  text-align: center;
+  background: var(--surface1);
+  border-bottom: 1px solid var(--pulse);
+}
+.iab-banner .iab-lead {
+  margin: 0 0 10px;
+  color: var(--text-hi);
+  font-size: 0.95rem;
+}
+.iab-banner .iab-open {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--pulse);
+  color: var(--surface0);
+  font-weight: 600;
+  text-decoration: none;
+}
+.iab-banner .iab-hint {
+  margin: 10px 0 0;
+  color: var(--text-mid);
+  font-size: 0.8rem;
+}

@@ -206,3 +206,48 @@
     });
   });
 })();
+
+/* ---------- in-app browser breakout (2026-07-17) ----------
+   Google refuses OAuth inside embedded WebViews (LinkedIn, Instagram, …):
+   a visitor who follows the app CTA in here dead-ends at "access denied"
+   on sign-in. Detect the trap the moment the LANDING loads, banner the way
+   out, and point the CTA itself at a scheme that hands the app to the
+   system browser (intent:// on Android, x-safari-https:// on iOS). */
+(function () {
+  "use strict";
+
+  var ua = navigator.userAgent || "";
+  var app = /LinkedInApp/i.test(ua) ? "LinkedIn"
+    : /FBAN|FBAV|FB_IAB/.test(ua) ? "Facebook"
+    : /Instagram/i.test(ua) ? "Instagram"
+    : /musical_ly|TikTok|Bytedance/i.test(ua) ? "TikTok"
+    : /MicroMessenger/i.test(ua) ? "WeChat"
+    : /Snapchat/i.test(ua) ? "Snapchat"
+    : /; wv\)/.test(ua) ? "this app"
+    : null;
+  if (!app) return;
+
+  var android = /Android/.test(ua);
+  function breakout(url) {
+    var bare = url.replace(/^https:\/\//, "");
+    return android
+      ? "intent://" + bare + "#Intent;scheme=https;action=android.intent.action.VIEW;end"
+      : "x-safari-https://" + bare;
+  }
+
+  var banner = document.createElement("div");
+  banner.className = "iab-banner";
+  banner.innerHTML =
+    "<p class=\"iab-lead\">You’re in " + app +
+    "’s built-in browser — sign-in won’t work here.</p>" +
+    "<a class=\"iab-open\" href=\"" + breakout(location.href) + "\">Open in browser</a>" +
+    "<p class=\"iab-hint\">or tap the ⋯ menu and choose “Open in browser”</p>";
+  document.body.insertBefore(banner, document.body.firstChild);
+
+  /* The app CTA breaks out too — never walk deeper into the WebView. */
+  var cta = document.querySelector(".hear-link");
+  if (cta) {
+    cta.href = breakout(cta.href);
+    cta.removeAttribute("target");
+  }
+})();
