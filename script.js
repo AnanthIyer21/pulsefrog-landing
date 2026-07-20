@@ -255,9 +255,12 @@
     });
   });
 
-  /* ---------- waitlist (§5.1 · 4) ---------- */
+  /* ---------- waitlist (retired 2026-07-20: the page is live, the section is
+     now Start-listening + Support). Kept behind a null guard so the code is a
+     no-op if the form is absent, and still works if it ever returns. ------- */
 
   var form = document.getElementById("waitlist-form");
+  if (form) {
   var emailInput = document.getElementById("email");
   var submitBtn = form.querySelector("button[type=submit]");
   var status = document.getElementById("waitlist-status");
@@ -321,6 +324,7 @@
       submitBtn.disabled = false;
     });
   });
+  } // end if (form)
 })();
 
 /* ---------- in-app browser breakout (2026-07-17) ----------
@@ -365,7 +369,7 @@
   banner.className = "iab-banner";
   banner.innerHTML =
     "<p class=\"iab-lead\">You’re in " + app +
-    "’s built-in browser — sign-in won’t work here.</p>" +
+    "’s built-in browser. Sign-in won’t work here.</p>" +
     "<a class=\"iab-open\" href=\"" + breakout(location.href) + "\">Open in browser</a>" +
     "<p class=\"iab-hint\">or tap the ⋯ menu and choose “Open in browser”</p>";
   document.body.insertBefore(banner, document.body.firstChild);

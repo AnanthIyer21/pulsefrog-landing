@@ -438,3 +438,40 @@ footer a:hover { color: var(--text-hi); }
 }
 .signin-btn:hover { opacity: 0.88; }
 .signin-btn:focus-visible { outline: 2px solid var(--pulse); outline-offset: 3px; }
+
+
+/* Live-now + support section (founder 2026-07-20: page is public; donate,
+   don't charge). Replaces the price + waitlist form. */
+.live-cta, .donate-cta {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding: 13px 30px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: opacity 120ms ease-out, transform 120ms ease-out;
+}
+.live-cta {
+  background: var(--pulse);
+  color: var(--surface0);
+}
+.live-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.donate-cta {
+  margin-top: 0.9rem;
+  background: transparent;
+  color: var(--pulse);
+  border: 1px solid var(--pulse);
+}
+.donate-cta:hover { background: var(--pulse-soft); }
+.live-cta:focus-visible, .donate-cta:focus-visible {
+  outline: 2px solid var(--pulse);
+  outline-offset: 3px;
+}
+.support-note {
+  margin-top: 1.8rem;
+  max-width: 46ch;
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
